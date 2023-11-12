@@ -1,4 +1,4 @@
-package com.mark.moviemaster.ui.theme
+package com.mark.moviemaster.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

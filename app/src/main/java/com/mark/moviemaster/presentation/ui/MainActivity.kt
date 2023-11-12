@@ -1,4 +1,4 @@
-package com.mark.moviemaster
+package com.mark.moviemaster.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mark.moviemaster.ui.theme.MovieMasterTheme
+import com.mark.moviemaster.presentation.ui.theme.MovieMasterTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
