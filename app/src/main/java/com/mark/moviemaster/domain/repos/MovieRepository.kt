@@ -1,8 +1,8 @@
 package com.mark.moviemaster.domain.repos
 
-import com.mark.moviemaster.data.local.models.MoviesModelItem
+import com.mark.moviemaster.data.local.models.MoviesModel
 
 interface MovieRepository {
-    suspend fun getAllMovies(): List<MoviesModelItem>
+    suspend fun getAllMovies(): MoviesModel
 
 }

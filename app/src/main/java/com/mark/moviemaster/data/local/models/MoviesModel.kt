@@ -2,4 +2,4 @@ package com.mark.moviemaster.data.local.models
 
 
 
-class MoviesModel : ArrayList<MoviesModelItem>()
+data class MoviesModel (val movies:ArrayList<MoviesModelItem>)

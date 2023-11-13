@@ -16,4 +16,5 @@ abstract class DataSourceModule {
     abstract fun bindLocalDataSource(
         localDataSource: LocalMoviesDataSourceImpl,
     ): LocalMovieDataSource
+
 }

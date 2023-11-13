@@ -82,8 +82,10 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
     //daggerhilt
     implementation( "com.google.dagger:hilt-android:2.44")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt( "com.google.dagger:hilt-android-compiler:2.44")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
+
     // JitpackUI
     implementation("com.github.bumptech.glide:glide:4.13.0")
     kapt("com.github.bumptech.glide:compiler:4.9.0")
@@ -97,8 +99,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
     // Navigation
+    val nav_version = "2.7.5"
+    implementation ("androidx.navigation:navigation-compose:$nav_version")
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
-
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
 }
