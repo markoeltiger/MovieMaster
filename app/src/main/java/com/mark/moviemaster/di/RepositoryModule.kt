@@ -2,6 +2,8 @@ package com.mark.moviemaster.di
 
 
 import com.mark.moviemaster.data.local.repos.MovieRepositoryImpl
+import com.mark.moviemaster.data.remote.repos.MovieImageRepositoryImpl
+import com.mark.moviemaster.domain.repos.MovieImageRepository
 import com.mark.moviemaster.domain.repos.MovieRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,9 @@ abstract class RepositoryModule {
     abstract fun bindMoviesRepository(
         moviesRepositoryImpl: MovieRepositoryImpl,
     ): MovieRepository
+    @Singleton
+    @Binds
+    abstract fun bindMovieImageRepository(
+        movieImageRepositoryImpl: MovieImageRepositoryImpl,
+    ): MovieImageRepository
 }

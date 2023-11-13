@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mark.moviemaster.data.local.models.MoviesModelItem
+import com.mark.moviemaster.utils.helper.AppHelper.random
 
 @Composable
 fun MovieListItem (
@@ -35,11 +36,13 @@ fun MovieListItem (
         Text(
             text = "${movie.title}",
             style = MaterialTheme.typography.bodyMedium,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            color =  Color.Companion.random()
         )
         Text(
             text = "${movie.year}",
-            style = MaterialTheme.typography.bodySmall,
+            color =  Color.Companion.random(),
+           style = MaterialTheme.typography.bodySmall,
             overflow = TextOverflow.Ellipsis
          )
 

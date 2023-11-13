@@ -1,12 +1,13 @@
 package com.mark.moviemaster.data.remote
 
+import com.mark.moviemaster.BuildConfig
 import com.mark.moviemaster.data.remote.models.MovieImageResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FlickerApi {
 
-    @GET("/rest/")
+    @GET("rest/")
     suspend fun getMovieImage(
         @Query("api_key") apikey: String,
         @Query("method") method: String,
@@ -20,8 +21,8 @@ interface FlickerApi {
 
     companion object {
         const val METHOD = "flickr.photos.search"
-        const val BASE_URL = "https://www.flickr.com/services"
-        const val API_KEY= ""
+        const val BASE_URL = "https://www.flickr.com/services/"
+        const val API_KEY= BuildConfig.API_KEY
         const val FORMAT_JSON = "json"
         const val NO_JSON_CALLBACK = 1
         const val page = 1
