@@ -24,6 +24,7 @@ import com.mark.moviemaster.R
 import com.mark.moviemaster.presentation.ui.components.MovieListItem
 import com.mark.moviemaster.presentation.ui.navigation.Routes
 import com.mark.moviemaster.presentation.viewmodel.movies.MoviesListViewModel
+import com.mark.moviemaster.utils.helper.AppHelper
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,6 +64,7 @@ Column {
                 MovieListItem(
                     movie = movieUiState!!.movies.get(movie),
                     onItemClick = {
+                        AppHelper.selectedMovie=it
                         navController.navigate(Routes.MovieDetailScreen.route)
                     }
                 )

@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -9,15 +12,33 @@ plugins {
 android {
     namespace = "com.mark.moviemaster"
     compileSdk = 34
-
-    defaultConfig {
+    var localPropertiesFile = rootProject.file("local.properties")
+    var localProperties =  Properties()
+     defaultConfig {
         applicationId = "com.mark.moviemaster"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+         val properties = Properties()
+         val apiKey: String
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+         val localPropertiesFile = project.rootProject.file("local.properties")
+         apiKey = if (localPropertiesFile.exists()) {
+             properties.load(localPropertiesFile.inputStream())
+             properties.getProperty("FLICKER_KEY") ?: ""
+         } else {
+             System.getenv("FLICKER_KEY") ?: ""
+         }
+
+         buildConfigField(
+             "String",
+             "API_KEY",
+             "\"$apiKey\""
+         )
+
+
+         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -32,6 +53,7 @@ android {
             )
         }
     }
+
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -41,6 +63,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -108,4 +131,6 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
+    //Glide
+    implementation("com.github.skydoves:landscapist-glide:1.3.6")
 }

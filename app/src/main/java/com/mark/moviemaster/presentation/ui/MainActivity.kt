@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.findNavController
+import com.mark.moviemaster.presentation.ui.moviedetails.MovieDetailsScreen
 import com.mark.moviemaster.presentation.ui.movies.MovieListScreen
 import com.mark.moviemaster.presentation.ui.navigation.Routes
 import com.mark.moviemaster.presentation.ui.theme.MovieMasterTheme
@@ -49,6 +50,7 @@ import dagger.hilt.android.AndroidEntryPoint
                         composable(
                             route = Routes.MovieDetailScreen.route
                         ) {
+                            MovieDetailsScreen(navController)
 
                         }
 
