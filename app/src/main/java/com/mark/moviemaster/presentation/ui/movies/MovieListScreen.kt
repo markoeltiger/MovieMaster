@@ -15,13 +15,17 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mark.moviemaster.R
 import com.mark.moviemaster.presentation.ui.components.MovieListItem
+import com.mark.moviemaster.presentation.ui.movies.events.MovieListingEvent
 import com.mark.moviemaster.presentation.ui.navigation.Routes
 import com.mark.moviemaster.presentation.viewmodel.movies.MoviesListViewModel
 import com.mark.moviemaster.utils.helper.AppHelper
@@ -32,15 +36,17 @@ fun MovieListScreen(
     navController: NavController,
     viewModel: MoviesListViewModel = hiltViewModel()
     ){
+    val textState = remember { mutableStateOf(TextFieldValue("")) }
     val movieUiState by viewModel.movieUiState.collectAsState()
 Column {
 
     OutlinedTextField(
-        value = viewModel.movieUiState.value.searchQuery,
+        value = textState.value,
         onValueChange = {
-//            viewModel.onEvent(
-//                CompanyListingsEvent.OnSearchQueryChange(it)
-//            )
+                        textState.value=it
+            viewModel.onEvent(
+                MovieListingEvent.OnSearchQueryChange(it.text)
+            )
         },
         modifier = Modifier
             .padding(16.dp)
