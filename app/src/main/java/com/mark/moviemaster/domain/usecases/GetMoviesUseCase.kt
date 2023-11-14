@@ -10,13 +10,6 @@ class GetMoviesUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
 ) {
     suspend fun getAllMoviesUseCase(): List<MoviesModelItem> {
-        try {
-            Log.e("getAllMoviesUseCase",movieRepository.getAllMovies().toString())
-
-        }catch (e:Exception){
-            Log.e("Exception",e.toString())
-
-        }
          return movieRepository.getAllMovies().movies
     }
 }

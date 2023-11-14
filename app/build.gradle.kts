@@ -93,6 +93,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -133,4 +134,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
     //Glide
     implementation("com.github.skydoves:landscapist-glide:1.3.6")
+    //Testing
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.mockito:mockito-core:2.11.0")
+    testImplementation ("android.arch.core:core-testing:1.1.1")
+    testImplementation ("com.google.truth:truth:1.1")
+// For Robolectric tests.
+    testImplementation("com.google.dagger:hilt-android-testing:2.28-alpha")
 }
