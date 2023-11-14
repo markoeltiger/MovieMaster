@@ -9,6 +9,7 @@ class GetMovieImageUseCase @Inject constructor(
     private val movieImageRepository: MovieImageRepository,
 ) {
     suspend fun getAllMoviesUseCase(movieTitle:String):MovieImageResponse{
+
          return  movieImageRepository.getMovieImage(movieTitle)
 
     }
