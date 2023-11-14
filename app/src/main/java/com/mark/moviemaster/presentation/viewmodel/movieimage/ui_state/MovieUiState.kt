@@ -4,4 +4,7 @@ import com.mark.moviemaster.data.remote.models.Photo
 
 data class MovieUiState(
                         val photos: List<Photo> = emptyList(),
-    )
+                        val msg:String = "",
+                        val isError:Boolean =false,
+
+                        )

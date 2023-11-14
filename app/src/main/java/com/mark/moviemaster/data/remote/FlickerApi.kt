@@ -2,8 +2,10 @@ package com.mark.moviemaster.data.remote
 
 import com.mark.moviemaster.BuildConfig
 import com.mark.moviemaster.data.remote.models.MovieImageResponse
+import com.mark.moviemaster.utils.network.Resource
 import retrofit2.http.GET
 import retrofit2.http.Query
+import kotlinx.coroutines.flow.Flow
 
 interface FlickerApi {
 
@@ -16,7 +18,7 @@ interface FlickerApi {
         @Query("nojsoncallback") noJsonCallback: Int,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
-    ): MovieImageResponse
+    ):   MovieImageResponse
 
     companion object {
         const val METHOD = "flickr.photos.search"

@@ -8,6 +8,7 @@ import com.mark.moviemaster.domain.usecases.GetMovieImageUseCase
 import com.mark.moviemaster.domain.usecases.GetMoviesUseCase
 import com.mark.moviemaster.presentation.viewmodel.movies.ui_state.MovieUiState
 import com.mark.moviemaster.presentation.viewmodel.movies.ui_state.MoviesListUiState
+import com.mark.moviemaster.utils.network.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,18 +23,33 @@ import javax.inject.Inject
 class MovieDetailsViewModel @Inject constructor(
     private val getMovieImageUseCase: GetMovieImageUseCase,
 ) : ViewModel() {
-    private val viewModelScope = CoroutineScope(Dispatchers.Main)
+    private val viewModelScope = CoroutineScope(Dispatchers.IO)
     val movieDetail =
         MutableStateFlow(com.mark.moviemaster.presentation.viewmodel.movieimage.ui_state.MovieUiState())
 
     fun movieDetail(movieTitle: String) {
-        viewModelScope.launch(Dispatchers.Main) {
-            val images = getMovieImageUseCase.getAllMoviesUseCase(movieTitle).photos
-            movieDetail.update {
-                it.copy(
-                    photos = images.photo
-                )
+        viewModelScope.launch(Dispatchers.IO) {
+            getMovieImageUseCase.getAllMoviesUseCase(movieTitle).collect { movies ->
+                movieDetail.update {
+                    when (movies) {
+                        is Resource.Success -> {
+                            it.copy(
+                                photos = movies.data!!.photos.photo
+                            )
+                        }
+
+                        else -> {
+                            it.copy(
+                                photos = emptyList(),
+                                msg = movies.message!!,
+                                isError = true
+                            )
+                        }
+                    }
+
+                }
             }
+
 
         }
     }

@@ -1,6 +1,7 @@
 package com.mark.moviemaster.presentation.ui.moviedetails
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,6 +28,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,16 +52,24 @@ fun MovieDetailsScreen(
     navController: NavController, viewModel: MovieDetailsViewModel = hiltViewModel()
 ) {
     var state: MovieUiState by remember { mutableStateOf(MovieUiState()) }
+    val context = LocalContext.current
     //Launched Effect to stop calling the function when recomposation
+
     LaunchedEffect(true) {
         viewModel.movieDetail(AppHelper.selectedMovie!!.title)
 
         launch {
             state = viewModel.movieDetail.value
+            viewModel.movieDetail.collectLatest {
+                if (it.isError) {
+                    Toast.makeText(context, it.msg, Toast.LENGTH_SHORT).show()
+                } else {
+                    state = it
+
+                }
+            }
         }
-        viewModel.movieDetail.collectLatest {
-            state = it
-        }
+
     }
     Column(
         modifier = Modifier
@@ -140,6 +150,7 @@ fun MovieDetailsScreen(
 
     }
 }
+
 @Composable
 fun MovieDetail(
 ) {
