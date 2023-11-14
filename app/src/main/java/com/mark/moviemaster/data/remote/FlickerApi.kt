@@ -18,7 +18,6 @@ interface FlickerApi {
         @Query("per_page") perPage: Int,
     ): MovieImageResponse
 
-
     companion object {
         const val METHOD = "flickr.photos.search"
         const val BASE_URL = "https://www.flickr.com/services/"
@@ -26,6 +25,6 @@ interface FlickerApi {
         const val FORMAT_JSON = "json"
         const val NO_JSON_CALLBACK = 1
         const val page = 1
-        const val per_page = 1
+        const val per_page = 20
     }
 }
