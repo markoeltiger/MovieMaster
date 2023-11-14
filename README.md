@@ -71,7 +71,7 @@ This project follows the Clean Architecture structure and MVVM. It has UseCases 
 
 ## Screenshots
 
-<p align="center"> <img src="screenshots/screenshot1.png" alt="screenshots/screenshot2.png" width="250"/>  <img src="screenshots/screenshot3.png" width="250"/>  <img src="screenshots/screenshot3.png" width="250" />
+<p align="center"> <img src="screenshots/screenshot1.png" alt="screenshots/screenshot2.png" width="250"/>  <img src="screenshots/screenshot2.png" width="250"/>  <img src="screenshots/screenshot3.png" width="250" />
  <img src="https://i.ibb.co/TW8fFNR/Screenshot-2023-11-14-at-8-17-17-PM.png" width="250" /></p>
 
 
